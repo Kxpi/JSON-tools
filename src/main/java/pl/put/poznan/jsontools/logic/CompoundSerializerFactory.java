@@ -43,7 +43,7 @@ public class CompoundSerializerFactory {
      * @return The parsed transform designator
      */
     TransformDesignator splitTransformAndArguments(String transformKey){
-        String[] idArgs = transformKey.split(":", 1);
+        String[] idArgs = transformKey.split(":", 2);
 
         if(idArgs.length == 1){
             return new TransformDesignator(idArgs[0], new String[]{});
@@ -63,9 +63,9 @@ public class CompoundSerializerFactory {
     JsonSerializer createSerializer(TransformDesignator td, JsonSerializer innerSerializer) throws InvalidParameterException{
         switch(td.transformId){
             case "remove":
-                return null; // new FilterRemoveJsonSerializer(innerSerializer, td.arguments);
+                return new FilterDeleteJsonSerializer(innerSerializer, td.arguments);
             case "keep":
-                return null; // new FilterKeepJsonSerializer(innerSerializer, td.arguments);
+                return new FilterKeepJsonSerializer(innerSerializer, td.arguments);
             case "echo":
                 return innerSerializer; // Special case - does nothing more than inner serializer
         }

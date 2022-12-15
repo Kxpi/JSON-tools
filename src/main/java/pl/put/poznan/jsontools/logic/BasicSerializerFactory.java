@@ -7,9 +7,9 @@ public class BasicSerializerFactory {
     public JsonSerializer create(String outputFormat) throws InvalidParameterException{
         switch(outputFormat){
             case "minified":
-                return null; // new MinifiedJsonSerializer();
+                return new MinifyJsonSerializer();
             case "pretty":
-                return null; // new PrettyJsonSerializer();
+                return new PrettifyJsonSerializer();
         }
 
         throw new InvalidParameterException(outputFormat + " is not a valid key for a basic JSON serializer.");

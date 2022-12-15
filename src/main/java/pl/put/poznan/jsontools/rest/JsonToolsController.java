@@ -43,9 +43,8 @@ public class JsonToolsController {
         serializer = bsFactory.create(format);
         serializer = csFactory.create(action, serializer);
 
-        // Perform transforms here...
-        // outputJson = serializer.serialize(parsedJson);
-        String outputJson = mapper.writeValueAsString(parsedJson);
+        // Perform transforms here
+        String outputJson = serializer.serialize(parsedJson);
 
         return outputJson;
     }
