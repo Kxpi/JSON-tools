@@ -20,6 +20,7 @@ public class JsonToolsController {
     public String get(
             @RequestBody String inputJson,
             @RequestParam(name="format", defaultValue="minified") String format,
+            @RequestParam(name="action", defaultValue="remove") String action,
             @RequestParam(name="transforms", defaultValue="echo") String[] transforms) throws JsonProcessingException {
 
         // log the parameters
