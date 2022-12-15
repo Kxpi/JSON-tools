@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class JsonSerializerDecorator {
+public abstract class JsonSerializerDecorator implements JsonSerializer {
 
     JsonSerializer jsonSerializer;
     List<String> strings;
