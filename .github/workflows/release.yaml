@@ -55,5 +55,5 @@ jobs:
           tag: ${{ env.GITHUB_REF_NAME }}
           artifacts: "build/libs/springBoot.jar"
           bodyFile: "body.log"
-          token: ${{ secrets.ACCESS_TOKEN }
+          token: ${{ secrets.ACCESS_TOKEN }}
   
