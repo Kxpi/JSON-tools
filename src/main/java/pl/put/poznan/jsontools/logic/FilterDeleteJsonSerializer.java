@@ -11,7 +11,6 @@ public class FilterDeleteJsonSerializer extends JsonSerializerDecorator {
 
     @Override
     public String serialize(JsonNode jsonNode) {
-        // TODO: test if this shi works
         List<String> keys = new ArrayList<>();
         Iterator<String> iterator = jsonNode.fieldNames();
         iterator.forEachRemaining(e -> keys.add(e));
