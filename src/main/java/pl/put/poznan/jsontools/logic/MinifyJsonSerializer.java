@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Class for formatting JSON output as string
+ * Class for formatting JSON output as a minified string
  */
 public class MinifyJsonSerializer implements JsonSerializer {
 

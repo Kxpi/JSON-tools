@@ -15,12 +15,22 @@ import java.security.InvalidParameterException;
 import java.util.Arrays;
 
 
+/**
+ * A controller for requests related to the /json endpoint.
+ */
 @RestController
 @RequestMapping("/json")
 public class JsonToolsController {
 
     private static final Logger logger = LoggerFactory.getLogger(JsonToolsController.class);
 
+    /**
+     * Processes the incoming GET requests
+     * @param inputJson The JSON to be transformed
+     * @param format Output format
+     * @param action Designation of action(s) to run
+     * @return The transformed JSON
+     */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(
             @RequestBody String inputJson,

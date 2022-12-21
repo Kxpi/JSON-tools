@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Abstract class used for deleting omitted properties of JSON file
+ * Abstract class used as a base for all serializers that decorate other ones
  */
 public abstract class JsonSerializerDecorator implements JsonSerializer{
 
@@ -16,7 +16,7 @@ public abstract class JsonSerializerDecorator implements JsonSerializer{
 
     /**
      * Creates a JsonSerializerDecorator object
-     * @param jsonSerializer serialzer used to return parsed json
+     * @param jsonSerializer serializer used to return parsed json
      * @param strings array of strings
      */
     JsonSerializerDecorator(JsonSerializer jsonSerializer, String[] strings){
@@ -25,7 +25,7 @@ public abstract class JsonSerializerDecorator implements JsonSerializer{
     }
 
     /**
-     * abstract method that serialize given JSON
+     * Abstract method that serialize given JSON
      */
     public abstract String serialize(JsonNode jsonNode);
 }
