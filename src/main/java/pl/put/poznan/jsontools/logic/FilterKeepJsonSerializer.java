@@ -15,6 +15,7 @@ import java.util.List;
 public class FilterKeepJsonSerializer extends JsonSerializerDecorator {
 
     private static final Logger logger = LoggerFactory.getLogger(FilterKeepJsonSerializer.class);
+
     /**
      * Creates a FilterKeepJsonSerializer object
      * @param jsonSerializer serializer used to return parsed json
@@ -24,21 +25,21 @@ public class FilterKeepJsonSerializer extends JsonSerializerDecorator {
         super(jsonSerializer, strings);
         logger.debug("Created FilterKeepJsonSerializer object");
     }
-    
+
     /**
-     * Method that delete omitted parameters of JSON file
+     * Method that deletes omitted parameters of JSON file
      * @param jsonNode formatted JSON file
      * @return serialized JSON file in String format
      */
     @Override
-    public String serialize(JsonNode jsonNode){
+    public String serialize(JsonNode jsonNode) {
         logger.debug("Deleting omitted properties of given JSON");
         List<String> keys = new ArrayList<>();
         Iterator<String> iterator = jsonNode.fieldNames();
         iterator.forEachRemaining(e -> keys.add(e));
         ObjectNode objectNode = (ObjectNode) jsonNode;
         for (String key : keys) {
-            if (!strings.contains(key)){
+            if (!strings.contains(key)) {
                 objectNode.remove(key);
             }
         }
