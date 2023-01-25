@@ -30,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: kxpic/io-json-tools::latest
+          tags: kxpic/io-json-tools:latest
