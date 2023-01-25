@@ -4,7 +4,10 @@ public class CaseCoderFactory {
 
     public CaseCoder create(CasingScheme scheme) {
         switch(scheme) {
-            // TODO: implement other coders
+            case SNAKE_CASE:
+                return new SnakeCaseCoder();
+            case CAMEL_CASE:
+                return new CamelCaseCoder();
             default:
                 return new UnknownCaseCoder();
         }
