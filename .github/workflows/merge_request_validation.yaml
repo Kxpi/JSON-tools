@@ -4,8 +4,19 @@ on:
   pull_request:
 
 jobs:
+
+  formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # v2 minimum required
+      - uses: axel-op/googlejavaformat-action@v3
+        with:
+          args: "--skip-sorting-imports --replace"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   linter:
     runs-on: ubuntu-latest
+    needs: formatting
     continue-on-error: true 
     steps:
       - uses: actions/checkout@v3
@@ -16,9 +27,10 @@ jobs:
           VALIDATE_JAVA: true
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
+
   build_and_test:
     runs-on: ubuntu-latest
+    needs: linter
     steps:
       - uses: actions/checkout@v3
       
@@ -28,5 +40,5 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Build and test with Maven
-        run: mvn --batch-mode --update-snapshots package
+      - name: Test with Maven
+        run: mvn test
