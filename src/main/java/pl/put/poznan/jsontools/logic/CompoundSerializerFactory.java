@@ -34,6 +34,10 @@ public class CompoundSerializerFactory {
      * @return An array of portions that specify one transform each
      */
     String[] parseInput(String transformsKey){
+        if("".equals(transformsKey)) {
+            return new String[] {};
+        }
+
         return transformsKey.split(";");
     }
 
