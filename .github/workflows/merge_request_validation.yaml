@@ -8,7 +8,11 @@ jobs:
   formatting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # v2 minimum required
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
       - uses: axel-op/googlejavaformat-action@v3
         with:
           args: "--skip-sorting-imports --replace"
@@ -20,6 +24,9 @@ jobs:
     continue-on-error: true 
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Lint Code Base
         uses: github/super-linter@v4
@@ -33,6 +40,9 @@ jobs:
     needs: linter
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
       
       - name: Set up JDK 11
         uses: actions/setup-java@v3
