@@ -27,8 +27,10 @@ public class CasingNormalizeSerializer extends JsonSerializerDecorator {
         switch (strings[0]) {
             case "snake":
                 newCasingScheme = CasingScheme.SNAKE_CASE;
+                break;
             case "camel":
                 newCasingScheme = CasingScheme.CAMEL_CASE;
+                break;
             default:
                 logger.debug("Unknown casing type");
                 newCasingScheme = CasingScheme.UNKNOWN;
@@ -52,8 +54,6 @@ public class CasingNormalizeSerializer extends JsonSerializerDecorator {
             CaseCoder oldCaseCoder = caseCoderFactory.create(oldCasingScheme);
             String[] words = oldCaseCoder.decode(oldKey);
             String newKey = newCaseCoder.encode(words);
-            logger.debug(newKey);
-            logger.debug(words[0]);
             objectNode.put(newKey, jsonNode.get(oldKey));
         }
 

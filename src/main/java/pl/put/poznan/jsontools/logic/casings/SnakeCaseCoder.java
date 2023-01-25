@@ -4,6 +4,9 @@ public class SnakeCaseCoder implements CaseCoder{
     @Override
     public String[] decode(String text) {
         String[] words = text.split("_");
+        for (int i = 0; i < words.length; i++) {
+            words[i].toLowerCase();
+        }
         return words;
     }
 
