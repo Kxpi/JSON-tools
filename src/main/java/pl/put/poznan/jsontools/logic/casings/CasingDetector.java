@@ -18,7 +18,7 @@ public class CasingDetector {
         if (text.contains("_")) {
             return CasingScheme.SNAKE_CASE;
         }
-        if (text.matches("[a-z]+[A-Z][a-z]+")) {
+        if (text.matches(".*[a-z]+[A-Z][a-z]+.*")) {
             return CasingScheme.CAMEL_CASE;
         }
         return CasingScheme.UNKNOWN;
