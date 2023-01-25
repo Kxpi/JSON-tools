@@ -66,6 +66,8 @@ public class CompoundSerializerFactory {
                 return new FilterDeleteJsonSerializer(innerSerializer, td.arguments);
             case "keep":
                 return new FilterKeepJsonSerializer(innerSerializer, td.arguments);
+            case "casing":
+                return new CasingNormalizeSerializer(innerSerializer, td.arguments);
             case "types":
                 return new ValueTypesJsonSerializer(innerSerializer, td.arguments);
             case "echo":
